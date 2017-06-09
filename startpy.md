@@ -25,7 +25,6 @@
 > try | elif | in | while | else
 > is | with | except | lambda | yield
 
-3. balabala
 ### 行和缩进
 1. Python 的代码块使用**缩进**来控制类，函数以及其他逻辑判断
 > 以下语句将报错
@@ -37,6 +36,7 @@ else:
 ```
 > `IndentationError: unexpected indent` 错误: 空格或者tab使用个数不一致
 > `IndentationError: unindent does not match any outer indentation level`错误: 缩进方式不一致, 空格和tab混搭了
+
 2. Python语句中一般以新行作为为语句的结束符。但是我们可以使用斜`\`将一行的语句分为多行显示
 > 语句中包含 [], {} 或 () 括号就不需要使用多行连接符。
 
@@ -126,33 +126,47 @@ print "相加后的值为 : ", sum( 20, 20 )
 ### 模块
 1. 导入模块
 > `import a`采用这种方式导入时在默认的路径下应该有一个`a.py`的文件, 并且要使用这个脚本中的函数`f1`要使用`a.f1()`
+
 > `from a import *`采用这种方式导入时在默认的路径下应该有一个`a.py`的文件, 要使用这个脚本中函数`f1`只需使用`f1()`
+
 > `from a import f1`采用这种方式, 不会导入整个模块, 只导入函数f1
+
 2. 导入模块时的搜索路径
 > 1. 当前目录
+
 > 2. 如果不在当前目录，Python 则搜索在 shell 变量 `PYTHONPATH` 下的每个目录。
+
 > 3. 如果都找不到，Python会察看默认路径。UNIX下，默认路径一般为/usr/local/lib/python/。
+
 3. `PYTHONPATH`变量设置
 > `set PYTHONPATH=c:\python27\lib;` windows
+
 > `set PYTHONPATH=/usr/local/lib/python` unix
 
 ### 文件读取
 1. File 对象方法
 > file对象提供了操作文件的一系列方法。
+
 2. OS 对象方法
 > 提供了处理文件及目录的一系列方法。
 
 ### 其他``````
 1. py脚本首行加上: `#!/usr/bin/python`
 > 通过命令行执行python代码时, 就不用使用`python 1.py`, 而可以直接执行`./1.py`
+
 2. 首行加上: `# -*- coding: UTF-8 -*-`
 > 可以使python支持中文输出
+
 3. `isinstance(a,int)`
 > 可以检验a是否是int的一个实例
+
 4. 数值型和字符串型数据不能更改
 > strings, tuples, numbers
+
 5. 想要在函数内部给全局变量赋值, 必须在使用这个变量时用`global`声明这是一个全局变量
 > - 如果一个全局变量时可以更改的, 实际上不用`global`声明也可以对他进行修改
+
 > - 但是如果要给全局变量重新赋值, 则必须使用`global`字段声明他是全局变量
+
 6. `structshape()`
 > 查看一个类的类型和内容的基本信息
