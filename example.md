@@ -1,4 +1,22 @@
-###关于循环的例子
+### lambda的使用(py27)
+```python
+# 返回一个数组中最大的元素
+f = lambda a,b: a if (a > b) else b
+reduce(f, [47,11,42,102,13])
+```
+
+
+
+```python
+# 返回1到100个加和
+reduce(lambda x, y: x+y, range(1,101))
+```
+
+
+
+
+
+### 关于循环的例子
 ```python
 # 输出 2 到 100 间的质数
 prime = []
