@@ -1,4 +1,4 @@
-### `CountVectorizer`
+## `CountVectorizer`
 ```python
 ## 从文本中抽取特征
 from sklearn.feature_extraction.text import CountVectorizer
@@ -28,3 +28,23 @@ vectorizer.transform(b) # b是pandas.core.series.Series类型
 4. 方法`fit_transform`
 
 5. 方法`transform`
+
+
+## `Preprocessing`
+特征向量标准化
+[详见sklearn网站说明](http://scikit-learn.org/stable/modules/preprocessing.html)
+```python
+from sklearn import preprocessing
+import numpy as np
+X = np.array([[ 1., -1.,  2.],[ 3.,  0.,  0.], [ 0.,  1., -1.]])
+X_scaled = preprocessing.scale(X)
+# X_scaled的每列特征都转换成其z-score
+
+scaler = preprocessing.StandardScaler().fit(X)
+print(scaler.mean_)
+print(scaler.scale_)
+print(scaler.mean_)
+
+scaler.transform([[-1.,  1., 0.]])    ## 把一个新的列向量按照之前的标准标准化
+```
+
