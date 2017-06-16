@@ -36,15 +36,23 @@ vectorizer.transform(b) # b是pandas.core.series.Series类型
 ```python
 from sklearn import preprocessing
 import numpy as np
-X = np.array([[ 1., -1.,  2.],[ 3.,  0.,  0.], [ 0.,  1., -1.]])
+X = np.array([[ 1., -1.,  2.],[ 8.,  0.,  0.], [ 0.,  1., -1.]])
 X_scaled = preprocessing.scale(X)
 # X_scaled的每列特征都转换成其z-score
 
 scaler = preprocessing.StandardScaler().fit(X)
+# 在没有设置任何参数的情况下, 可以把X进行按照每列的分布归一化到N(0,1)
 print(scaler.mean_)
 print(scaler.scale_)
-print(scaler.mean_)
+print(scaler.transform(X))
 
-scaler.transform([[-1.,  1., 0.]])    ## 把一个新的列向量按照之前的标准标准化
+scaler.transform([[-1.,  1., 0.]])    ## 把一个新的列向量按照之前的标准归一化
+
+
+min_max_scaler = preprocessing.MinMaxScaler()  ## (x-min)/(max-min)
+X_train_minmax = min_max_scaler.fit_transform(X_train)
+
+X_train_minmax
+
 ```
 
