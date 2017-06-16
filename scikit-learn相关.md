@@ -31,7 +31,7 @@ vectorizer.transform(b) # b是pandas.core.series.Series类型
 
 
 ## `Preprocessing`
-特征向量标准化
+1. `scaler()` 特征向量标准化
 [详见sklearn网站说明](http://scikit-learn.org/stable/modules/preprocessing.html)
 ```python
 from sklearn import preprocessing
@@ -41,15 +41,13 @@ X_scaled = preprocessing.scale(X)
 # X_scaled的每列特征都转换成其z-score
 # 缺点, 无法对新变量使用同样的方法
 
-scaler = preprocessing.StandardScaler().fit(X)
-# 在没有设置任何参数的情况下, 可以把X进行按照每列的分布归一化到N(0,1)
+scaler = preprocessing.StandardScaler().fit(X) # 在没有设置任何参数的情况下, 可以把X进行按照每列的分布归一化到N(0,1)
 print(scaler.mean_)
 print(scaler.scale_)
 print(scaler.transform(X))
 
-scaler.transform([[-1., -1., -1.]])
-## 把一个新的行向量分别按照之前的列分布进行标准化
 
+scaler.transform([[-1., -1., -1.]])   # 把一个新的行向量(list of list)分别按照之前的列分布进行标准化
 
 min_max_scaler = preprocessing.MinMaxScaler()  ## (x-min)/(max-min)
 X_minmax = min_max_scaler.fit_transform(X)
@@ -59,3 +57,14 @@ print(X_minmax)
 min_max_scaler.transform([[100,100,100]])
 ```
 
+2. `LabelEncoder()` 为分类问题中的类别设置标签
+
+```python
+from sklearn import preprocessing
+le = preprocessing.LabelEncoder()
+le.fit(["paris", "paris", "tokyo", "amsterdam"])
+
+list(le.classes_)
+le.transform(["tokyo", "tokyo", "paris"]) # 把一个新向量(list)按照之前的规则编码
+list(le.inverse_transform([2, 2, 1])) # 把一个编码按照之前的规则转化成值
+```
