@@ -68,3 +68,21 @@ list(le.classes_)
 le.transform(["tokyo", "tokyo", "paris"]) # 把一个新向量(list)按照之前的规则编码
 list(le.inverse_transform([2, 2, 1])) # 把一个编码按照之前的规则转化成值
 ```
+
+## `KFold`
+
+```python
+from sklearn.cross_validation import KFold
+X = np.array([[1, 2], [3, 4], [1, 2], [3, 4], [1, 2], [3, 4]])
+y = np.array([1, 2, 3, 4, 5, 6])
+kf = KFold(6, n_folds=3)
+
+
+for train_index, test_index in kf:
+    print("TRAIN:", train_index, "TEST:", test_index)
+    X_train, X_test = X[train_index], X[test_index]
+    y_train, y_test = y[train_index], y[test_index]
+```
+> 通过`train_index`和`test_index`可以把训练集按照一定的折数进行分组
+
+> [详见sklearn网站说明](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.KFold.html)
