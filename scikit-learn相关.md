@@ -71,6 +71,7 @@ list(le.inverse_transform([2, 2, 1])) # 把一个编码按照之前的规则转�
 
 ## `KFold`
 
+1. old `sklearn.cross_validation.KFold()`
 ```python
 from sklearn.cross_validation import KFold
 X = np.array([[1, 2], [3, 4], [1, 2], [3, 4], [1, 2], [3, 4]])
@@ -88,3 +89,18 @@ for train_index, test_index in kf:
 > 参数`shuffle=TRUE`可以先把行的顺序随机打乱然后再进行分组
 
 > [详见sklearn网站说明](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.KFold.html)
+
+2. new `sklearn.model_selection.KFold()`
+```python
+from sklearn.model_selection import KFold
+X = np.array([[1, 2], [3, 4], [1, 2], [3, 4], [1, 2], [3, 4]])
+y = np.array([1, 2, 3, 4, 5, 6])
+kf = KFold(n_splits=3, shuffle=True)
+
+
+for train_index, test_index in kf.split(X):
+    print("TRAIN:", train_index, "TEST:", test_index)
+    X_train, X_test = X[train_index], X[test_index]
+    y_train, y_test = y[train_index], y[test_index]
+```
+> [详见sklearn网站说明](http://scikit-learn.org/dev/modules/generated/sklearn.model_selection.KFold.html)
