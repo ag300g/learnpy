@@ -3,9 +3,7 @@ import re
 import os
 import pandas as pd
 
-path = 'D:/oliverwyman/jdb.promo'
-
-path = '/Users/liuyinliang/CodeRepo/IntelliJProjects/Oliverwyman/jdb.promo'
+path = '/Users/****/CodeRepo/IntelliJProjects/****'
 
 '''
 extract relationship between tables
