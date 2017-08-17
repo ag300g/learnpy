@@ -34,7 +34,8 @@ sed 1d test.txt > test_new.txt
 
 #### 3. 把csv文件数据插入到建好的表中
 ```$xslt
-hive "load data inpath '/home/other_city_map_deliverycenter.csv' into table dev.robot123_other_city_map_deliverycenter;"
+hive "load data local inpath '/home/other_city_map_deliverycenter.csv' into table dev
+.robot123_other_city_map_deliverycenter;"
 ```
 > `into`是追加
 > `overwrite into`是覆盖
