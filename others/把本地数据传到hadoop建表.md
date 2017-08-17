@@ -39,3 +39,9 @@ hive "load data local inpath '/home/other_city_map_deliverycenter.csv' into tabl
 ```
 > `into`是追加
 > `overwrite into`是覆盖
+
+#### 4. 遇到有中文的表, 需要改变编码
+
+```$xslt
+ALTER TABLE dev.robot123_other_promotion_record SET SERDEPROPERTIES ('serialization.encoding'='GBK');
+```
