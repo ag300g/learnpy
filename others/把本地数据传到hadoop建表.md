@@ -47,7 +47,7 @@ pac_spec string,
 free_goods_flag string,
 item_sku_id_hashed string,
 main_sku_id_hashed string
-) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' TBLPROPERTIES ("skip.header.line.count"="1");
+) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' TBLPROPERTIES ("skip.header.line.count"="1");
 LOAD DATA LOCAL INPATH 'train_sku_basic_info.csv' OVERWRITE INTO TABLE dev.robot123_train_sku_basic_info;
 alter table dev.robot123_train_sku_basic_info set serdeproperties ('serialization.encoding'='GBK');
 ```
