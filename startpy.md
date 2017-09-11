@@ -55,6 +55,14 @@ print "a * 2 输出结果：", a * 2
 print "a[1] 输出结果：", a[1] 
 print "a[1:4] 输出结果：", a[1:4] 
 ```
+```
+结果为： 
+a + b 输出结果： HelloPython
+a * 2 输出结果： HelloHello
+a[1] 输出结果： e
+a[1:4] 输出结果： ell
+
+```
 2. 格式打印
 ```python
 print "My name is %s and weight is %d kg!" % ('Zara', 21) 
