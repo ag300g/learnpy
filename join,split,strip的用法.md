@@ -43,3 +43,4 @@ b.split()
 > `b.split("..",-1)`等价于`b.split("..")`
 
 
+### strip的用法示例
