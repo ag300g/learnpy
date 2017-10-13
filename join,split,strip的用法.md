@@ -21,8 +21,8 @@ s = ['my','name','is','bob']
 > 用来拆分字符串, 把一个`string`拆分成`list`
 
 ```python
-b = 'my..name..is..bob'
-b.split()
+>>> b = 'my..name..is..bob'
+>>> b.split()
 ## 运行结果为：['my..name..is..bob']
 
 >>> b.split("..")
@@ -44,3 +44,25 @@ b.split()
 
 
 ### strip的用法示例
+> 用来删除字符串开头，结尾处的 \n \r \t ''
+
+```
+>>> a = '     123'
+>>> a.strip()
+运行结果为：'123'
+
+>>> a='\t\tabc'
+>>> a.strip()
+运行结果为：'abc'
+>>> a = 'sdff\r\n'
+>>> a.strip()
+运行结果为：'sdff'
+
+>>> a = '123abc'
+>>> a.strip('21')
+运行结果为：'3abc'
+
+>>> a = '123abc'
+>>> a.strip('12')
+运行结果为：'3abc'
+```
