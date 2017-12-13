@@ -177,4 +177,6 @@ print "相加后的值为 : ", sum( 20, 20 )
 > - 但是如果要给全局变量重新赋值, 则必须使用`global`字段声明他是全局变量
 
 6. `structshape()`
+> `structshape`函数见`scripts`文件夹
+> 需要先`import`再使用:`from structshape import structshape`
 > 查看一个类的类型和内容的基本信息
