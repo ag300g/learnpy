@@ -159,7 +159,7 @@ print "相加后的值为 : ", sum( 20, 20 )
 > 提供了处理文件及目录的一系列方法。
 
 ### 其他``````
-1. py脚本首行加上: `#!/usr/bin/python`
+1. py脚本首行加上: `#!/usr/bin/python`或者`#!/usr/bin/env python3`
 > 通过命令行执行python代码时, 就不用使用`python 1.py`, 而可以直接执行`./1.py`
 
 2. 首行加上: `# -*- coding: UTF-8 -*-`
