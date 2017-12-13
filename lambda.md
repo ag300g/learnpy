@@ -58,7 +58,7 @@ lower('bb', 'aa')
  
 >>> act = action(99)
 
->>>act
+>>> act
 <function action.<locals>.<lambda> at 0x0000014EF59F4C80>
 
 >>> act(2)
