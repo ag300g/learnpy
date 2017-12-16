@@ -1,3 +1,146 @@
+# 创建数据框
+1. 通过二维数组创建数据框
+```python
+arr1 = np.array(np.arange(12)).reshape(4,3)
+arr1````````
+type(arr1)
+df1 = pd.DataFrame(arr1)
+df1
+type(df1)
+```
+2. 通过字典方式创建数据框
+```python
+dic1 = {'a':[1,2,3,4],'b':[5,6,7,8],
+        'c':[9,10,11,12],'d':[13,14,15,16]}
+dic1
+type(dic1)
+df2 = pd.DataFrame(dic1)
+df2
+type(df2)
+dic2 = {'one':{'a':1,'b':2,'c':3,'d':4},
+        'two':{'a':5,'b':6,'c':7,'d':8},
+        'three':{'a':9,'b':10,'c':11,'d':12}}
+dic2
+type(dic2)
+df3 = pd.DataFrame(dic2)
+df3
+type(df3)
+```
+3. 通过数据框方式创建数据框
+```python
+df4 = df3[['one','three']] ## 双[[]]保持数据结构
+df4
+type(df4)
+s1 = df3['one'] ## 单[]取成子结构
+s1
+type(s1)
+```
+
+4. 创建一个空的数据框，在按列往里面填数
+```python
+df5 = pd.DataFrame()
+df5['A'] = [1,2,3,4,5]
+df5['B'] = range(5)
+df5['C'] = np.arrange(5)
+```
+
+### 创建序列
+1. pandas中有两类非常重要的类
+> Series: 一维数组, 数据框中的某列
+
+> DataFrame: 数据框
+
+2. 通过一维数组创建序列
+```python
+import numpy as np, pandas as pd
+arr1 = np.arange(10)
+arr1
+type(arr1)
+s2 = pd.Series(arr1)
+s2
+type(s2)
+```
+3. 通过字典方式创建序列
+```python
+dic1 = {'a':10,'b':20,'c':30,'d':40,'e':50}
+dic1
+type(dic1)
+s3 = pd.Series(dic1)
+s3
+type(s3)
+```
+
+4. 直接创建
+```python
+x = pd.Series([1,2,3], index=['one', 'two', 'three'])
+```
+
+### 读取数据成为数据框
+1. 从`.csv`中读取数据
+> `pandas.read_csv('testdata.csv',sep=',',parse_dates=['order_date'])` 
+> `pd.io.parsers.read_csv()`
+> - 从csv中读取时，默认的`sep=','`
+> - `parse_dates`可以把有日期的列分解成 年，月，日三列
+
+[更多参数信息](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html)
+
+
+
+2. 从`.txt`中读取数据
+> `pandas.read_table('testdata.txt',sep='\t',parse_dates=['order_date'])` 
+
+### 引用数据框
+1. 引用某些列
+```python
+dic2 = {'a':[1,2,3,4],'b':[5,6,7,8],
+        'c':[9,10,11,12],'d':[13,14,15,16]}
+df2 = pd.DataFrame(dic2)
+df2.columns = ['aaa','bbb','ccc','ddd'] ## 重命名列名
+
+# 第一种引用方式
+df2[['aaa','ddd']] ## 双层[[]]保证取出来的数据依然是数据框
+
+# 第二种引用方式
+df2.loc[:,['aaa','ddd']]
+
+# 第三种引用方式
+df2.iloc[:,0] ## 没有双层的括号取出来的数据类型为Series
+
+# 第四种引用方式（最强大的引用方式）
+df2.ix[:,['aaa','ddd']]
+
+```
+2. 引用某些行
+```python
+dic2 = {'a':[1,2,3,4],'b':[5,6,7,8],
+        'c':[9,10,11,12],'d':[13,14,15,16]}
+df2 = pd.DataFrame(dic2)
+df2.index = ['aaa','bbb','ccc','ddd'] ## 重命名行名
+
+df2.ix[['aaa','ddd']] ## 双层[[]]保证取出来的数据依然是数据框
+df2.loc[['aaa','ddd']] ## 双层[[]]保证取出来的数据依然数据框
+```
+3. 引用某些行和某些列
+```python
+import numpy as np
+import pandas as pd
+df = pd.DataFrame(np.arange(0,60,2).reshape(10,3),columns=list('abc'))
+
+# 第一种获取方式(需要提供行名和列名)
+df.loc[0, 'a']
+df.loc[0:3, ['a', 'b']]
+df.loc[[1, 5], ['b', 'c']]
+
+# 第二种获取方式(需要提供行号和列号)
+df.iloc[1,1]
+df.iloc[0:3, [0,1]]
+df.iloc[[0, 3, 5], 0:2]
+
+# 最强的获取方式(既可以用行名列名，也可以使用列号行号)
+df.ix[[0],[1]]
+df.ix[[0],['b']]
+
+type(df.ix[[0],['a']])  ##即使只取出一个数也还是数据框
 # 数据框相关基本操作
 
 ### 1. 查看数据框的基本信息
@@ -189,6 +332,71 @@ frame[['e']].applymap(f2)  ## 可以正常运行
 
 > 3. 当函数是对向量进行的操作时, `apply()`只能施用于dataframe上.
 当函数是对标量进行的操作时, `apply()`只能施用于siries上.
+
+
+
+
+
+
+
+
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #  数据框相关常用技巧
 
