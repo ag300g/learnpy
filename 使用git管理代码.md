@@ -7,7 +7,7 @@ git init
 #### 2. 设置自己的名字和邮箱
 ```
 git config --global user.name ag300g
-git config --golbal user.email ag300g@163.com
+git config --global user.email ag300g@163.com
 ```
 只有当名字和remote的用户名一致时, 才会记录commit
 
