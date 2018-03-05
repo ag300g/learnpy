@@ -172,6 +172,13 @@ df.iloc[[0, 3, 5], 0:2]
 8. 透视表功能
 `df.pivot_table(index='animal', columns='visits', values='age', aggfunc='mean')`
 
+9. 一个数据框减去一个列向量
+`df.sub(df.mean(axis=1), axis=0)`
+> - `df.mean(axis=1)`是求对每行求平均
+> - `df.mean(axis=0)`是对某一列求平均
+> - `df.sub([1,2,3,4,5],axis=0)`是每列都去减掉这个list, list的长度必须与df的行长度一致
+> - `df.sub([1,2,3],axis=1)`是每行都去减掉这个list, list的长度必须与df的列长度一致
+
 ### 2. 按列聚合`groupby()`
 1. 按照一列聚合
 ```python
