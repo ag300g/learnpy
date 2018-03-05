@@ -165,6 +165,13 @@ df.iloc[[0, 3, 5], 0:2]
 5. 判定数据类型是否为数据框
 > `df.__class__.__name__=='DataFrame'`
 
+6. 统计某一列每种类型有多少行数据
+`df['animal'].value_counts()`
+
+7. 按某一行正序, 另一行倒序排列
+`df.sort_values(by=['age', 'visits'], ascending=[False, True])`
+
+
 ### 2. 按列聚合`groupby()`
 1. 按照一列聚合
 ```python
@@ -229,6 +236,11 @@ A
 ```
 cate_sales_monthly = sku_sales_daily_modify.groupby(['item_third_cate_cd','YM'])['total_sales'].agg({'month_sales':np.sum})
 ```
+
+5. 删除某一行
+`df = df.drop('k')`
+
+
 
 # 3. 储存
 
