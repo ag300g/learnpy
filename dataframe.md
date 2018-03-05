@@ -215,10 +215,15 @@ df.iloc[[0, 3, 5], 0:2]
 
 9. 一个数据框减去一个列向量
 `df.sub(df.mean(axis=1), axis=0)`
-> - `df.mean(axis=1)`是求对每行求平均
-> - `df.mean(axis=0)`是对某一列求平均
+> - `df.mean(axis=1)`是求对每行求平均,相当于作用于每行上的运算是一致的
+> - `df.mean(axis=0)`是对某一列求平均,相当于作用于每列上的运算是一致的
 > - `df.sub([1,2,3,4,5],axis=0)`是每列都去减掉这个list, list的长度必须与df的行长度一致
 > - `df.sub([1,2,3],axis=1)`是每行都去减掉这个list, list的长度必须与df的列长度一致
+
+10. 按照每列或者每行累加数据, 得到一个大小一样数据框
+`df = pd.DataFrame(np.random.random(size=(5, 10)), columns=list('abcdefghij'))`
+> - `df.cumsum(axis=1)` 一列一列的累加, 相当于作用于每行上的运算是一致的
+> - `df.cumsum(axis=0)` 一行一行的累加, 相当于作用于每列上的运算是一致的
 
 
 ### 3. 按列聚合`groupby()`
