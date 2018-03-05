@@ -168,8 +168,6 @@ df.iloc[[0, 3, 5], 0:2]
 6. 统计某一列每种类型有多少行数据
 `df['animal'].value_counts()`
 
-7. 按某一行正序, 另一行倒序排列
-`df.sort_values(by=['age', 'visits'], ascending=[False, True])`
 
 
 ### 2. 按列聚合`groupby()`
@@ -237,10 +235,24 @@ A
 cate_sales_monthly = sku_sales_daily_modify.groupby(['item_third_cate_cd','YM'])['total_sales'].agg({'month_sales':np.sum})
 ```
 
-5. 删除某一行
+### 其它基本操作
+1. 删除某一行
 `df = df.drop('k')`
 
+2. 按某一行正序, 另一行倒序排列
+`df.sort_values(by=['age', 'visits'], ascending=[False, True])`
 
+3. 重命名列明
+`df.rename(index=str, columns={"colA_old": "colA_new", "colC_old": "colC_new"})`
+> 通过columns给出一个替换额字典，据此替换
+
+4. 把某列的数值批量替换
+> 把某一个值替换
+> - `df['animal'] = df['animal'].replace('snake', 'python')`
+> 把多个值对应替换
+> - `df['priority'] = df['priority'].map({'yes': True, 'no': False})`
+
+5. 
 
 # 3. 储存
 
@@ -501,10 +513,7 @@ df = pd.concat[df, df1, axis=0]
 > - [说明文档](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html)
 
 
-#### 13. 重命名列明
 
-`df.rename(index=str, columns={"colA_old": "colA_new", "colC_old": "colC_new"})`
-> 通过columns给出一个替换额字典，据此替换
 
 #### 14. 对数据框施用某种函数
 
