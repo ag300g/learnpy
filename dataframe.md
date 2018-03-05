@@ -189,6 +189,11 @@ df.iloc[[0, 3, 5], 0:2]
 
 5. 删除重复的行
 `df.drop_duplicates()`
+> `df.drop_duplicates(keep='first')` 遇到重复时, 只留下第一个数据
+> `df.drop_duplicates(keep='last')` 遇到重复时, 只留下最后一个数据
+> `df.drop_duplicates(keep='False')` 遇到重复时, 一个问题也不留下
+
+
 
 6. 取得最大或者最小的数所在的下标(R中`which.min()`)
 `df.sum(axis=0).idxmin()` 按列求和,然后去最小的列和的列号
