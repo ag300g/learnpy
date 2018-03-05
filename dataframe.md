@@ -158,6 +158,7 @@ df.iloc[[0, 3, 5], 0:2]
 > - `list(df)`
 
 4. 查看行名`df.index.tolist()`
+
 5. 查看维度信息`df.shape`
 > 查看行数`df.shape[0]` or `len(df)`
 
@@ -169,6 +170,30 @@ df.iloc[[0, 3, 5], 0:2]
 7. 统计某一列每种类型有多少行数据
 `df['animal'].value_counts()`
 
+### 2. 基本操作
+1. 删除某一行
+`df = df.drop('k')`
+
+2. 按某一行正序, 另一行倒序排列
+`df.sort_values(by=['age', 'visits'], ascending=[False, True])`
+
+3. 重命名列明
+`df.rename(index=str, columns={"colA_old": "colA_new", "colC_old": "colC_new"})`
+> 通过columns给出一个替换额字典，据此替换
+
+4. 把某列的数值批量替换
+> 把某一个值替换
+> - `df['animal'] = df['animal'].replace('snake', 'python')`
+> 把多个值对应替换
+> - `df['priority'] = df['priority'].map({'yes': True, 'no': False})`
+
+5. 删除重复的行
+`df.drop_duplicates()`
+
+6. 取得最大或者最小的数所在的下标(R中`which.min()`)
+`df.sum(axis=0).idxmin()` 按列求和,然后去最小的列和的列号
+`df.sum(axis=1).idxmax()` 按行求和,然后去最大的行和的行号
+
 8. 透视表功能
 `df.pivot_table(index='animal', columns='visits', values='age', aggfunc='mean')`
 
@@ -179,7 +204,8 @@ df.iloc[[0, 3, 5], 0:2]
 > - `df.sub([1,2,3,4,5],axis=0)`是每列都去减掉这个list, list的长度必须与df的行长度一致
 > - `df.sub([1,2,3],axis=1)`是每行都去减掉这个list, list的长度必须与df的列长度一致
 
-### 2. 按列聚合`groupby()`
+
+### 3. 按列聚合`groupby()`
 1. 按照一列聚合
 ```python
 dic1 = {'a': [1, 1, 1, 2, 2, 2], 'b': [2, 3, 4, 2, 3, 4], 'c': ['s', 's', 's', 's', 's', 's'], 'd': [6, 5, 4, 3, 2, 1]}
@@ -243,26 +269,6 @@ A
 ```
 cate_sales_monthly = sku_sales_daily_modify.groupby(['item_third_cate_cd','YM'])['total_sales'].agg({'month_sales':np.sum})
 ```
-
-### 其它基本操作
-1. 删除某一行
-`df = df.drop('k')`
-
-2. 按某一行正序, 另一行倒序排列
-`df.sort_values(by=['age', 'visits'], ascending=[False, True])`
-
-3. 重命名列明
-`df.rename(index=str, columns={"colA_old": "colA_new", "colC_old": "colC_new"})`
-> 通过columns给出一个替换额字典，据此替换
-
-4. 把某列的数值批量替换
-> 把某一个值替换
-> - `df['animal'] = df['animal'].replace('snake', 'python')`
-> 把多个值对应替换
-> - `df['priority'] = df['priority'].map({'yes': True, 'no': False})`
-
-5. 删除重复的行
-`df.drop_duplicates()`
 
 
 
