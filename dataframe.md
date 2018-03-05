@@ -170,6 +170,13 @@ df.iloc[[0, 3, 5], 0:2]
 7. 统计某一列每种类型有多少行数据
 `df['animal'].value_counts()`
 
+
+
+
+
+
+
+
 ### 2. 基本操作
 1. 删除某一行
 `df = df.drop('k')`
@@ -191,11 +198,15 @@ df.iloc[[0, 3, 5], 0:2]
 `df.drop_duplicates()`
 > `df.drop_duplicates(keep='first')` 遇到重复时, 只留下第一个数据
 > `df.drop_duplicates(keep='last')` 遇到重复时, 只留下最后一个数据
-> `df.drop_duplicates(keep='False')` 遇到重复时, 一个问题也不留下
+> `df.drop_duplicates(keep='False')` 遇到重复时, 一个数据也不留下
 
+6. 留下重复的行
+`df.duplicated()` 返回是否是重复数据的标识: TRUE or FALSE
+> `df.duplicated(keep='first')` 遇到重复时,第一个数还是记为false
+> `df.duplicated(keep='last')` 遇到重复时, 最后一数还是记为false
+> `df.duplicated(keep='False')` 遇到重复时, 统统记为true
 
-
-6. 取得最大或者最小的数所在的下标(R中`which.min()`)
+7. 取得最大或者最小的数所在的下标(R中`which.min()`)
 `df.sum(axis=0).idxmin()` 按列求和,然后去最小的列和的列号
 `df.sum(axis=1).idxmax()` 按行求和,然后去最大的行和的行号
 
