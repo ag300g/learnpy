@@ -168,7 +168,8 @@ df.iloc[[0, 3, 5], 0:2]
 6. 统计某一列每种类型有多少行数据
 `df['animal'].value_counts()`
 
-
+7. 透视表功能
+`df.pivot_table(index='animal', columns='visits', values='age', aggfunc='mean')`
 
 ### 2. 按列聚合`groupby()`
 1. 按照一列聚合
