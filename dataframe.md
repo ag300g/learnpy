@@ -136,7 +136,7 @@ import pandas as pd
 df = pd.DataFrame(np.arange(0,60,2).reshape(10,3),columns=list('abc'))
 
 # 第一种获取方式(需要提供行名和列名)
-df.loc[0, 'a']
+df.loc[0, 'a']  #如果想要取出来度数据结构还是数据框, 需要使用df.loc[[0], ['a']]
 df.loc[0:3, ['a', 'b']]
 df.loc[[1, 5], ['b', 'c']]
 
@@ -144,8 +144,6 @@ df.loc[[1, 5], ['b', 'c']]
 df.iloc[1,1]
 df.iloc[0:3, [0,1]]
 df.iloc[[0, 3, 5], 0:2]
-
-
 
 
 
@@ -232,9 +230,9 @@ A
 cate_sales_monthly = sku_sales_daily_modify.groupby(['item_third_cate_cd','YM'])['total_sales'].agg({'month_sales':np.sum})
 ```
 
-### 3. 储存
+# 3. 储存
 
-#### 3.1. 把数据框的内容存入excel
+### 3.1. 把数据框的内容存入excel
 ```python
 ## test for to_excel
 import pandas as pd
@@ -250,7 +248,7 @@ df2.to_excel(writer,'Sheet2')
 # sheet1 and sheet2 can changed to any sheet names
 writer.save()
 ```
-#### 3.2. 把数据框内容存入csv
+### 3.2. 把数据框内容存入csv
 ```python
 res[['filename','child','parent']].drop_duplicates().to_csv('table_relationship.csv')
 ```
@@ -260,86 +258,6 @@ res[['filename','child','parent']].drop_duplicates().to_csv('table_relationship.
 
 > `to_csv('table_relationship.csv')`在当前路径下存储为`csv`格式文件
 
-### 4. 重命名列明
-
-`df.rename(index=str, columns={"colA_old": "colA_new", "colC_old": "colC_new"})`
-> 通过columns给出一个替换额字典，据此替换
-
-### 5. 对数据框施用某种函数
-
-#### 5.1. 每列分别使用某种函数: `apply()`
-```python
-import pandas as pd
-import numpy as np
-frame = pd.DataFrame(np.random.randn(4, 3), columns=list('bde'), index=['Utah', 'Ohio', 'Texas', 'Oregon'])
-f1 = lambda x: x.max() - x.min()
-frame.apply(f1)
-"""
-结果为:
-b    1.133201
-d    1.965980
-e    2.829781
-"""
-```
-> `apply`既能作用于dataframe, 也能作用于series.
-
-
-#### 5.2. 每个元素分别使用某种元素: `applymap()`
-```python
-## 接上面的frame
-f2 = lambda x: '%.2f' % x
-frame.applymap(f2)
-"""
-结果为:
-            b      d      e
-Utah    -0.03   1.08   1.28
-Ohio     0.65   0.83  -1.55
-Texas    0.51  -0.88   0.20
-Oregon  -0.49  -0.48  -0.31
-"""
-
-```
-> applymap只能作用于dataframe
-
-#### 5.3 比较`map()`, `apply()`, `applymap()`
-```python
-## 对于f1这种对向量操作的函数
-frame.apply(f1) ##可以正常运行
-frame.map(f1) ##报错(由于map作用的类型)
-frame.applymap(f1)  ##报错(由于函数f1作用域的类型)
-
-frame['e'].apply(f1) ##报错(由于函数f1作用域的类型)
-frame['e'].map(f1)  ##报错(由于函数f1作用域的类型)
-frame['e'].applymap(f1)  ##报错(由于applymap作用的类型)
-
-frame[['e']].apply(f1) ## 可以正常运行
-frame[['e']].map(f1)  ## 报错(由于map作用的类型)
-frame[['e']].applymap(f1)  ##报错(由于函数f1作用域的类型)
-
-
-
-
-## 对于f2这种对标量操作的函数
-frame.apply(f2) ##报错(由于函数f2作用域的类型)
-frame.map(f2) ##报错(由于map作用的类型)
-frame.applymap(f2)  ##可以运行
-
-frame['e'].apply(f2) ## 可以正常运行
-frame['e'].map(f2)  ## 可以正常运行
-frame['e'].applymap(f2)  ## 报错(由于applymap作用的类型)
-
-frame[['e']].apply(f2) ## 报错(由于函数f2作用域的类型)
-frame[['e']].map(f2)  ##报错(由于map作用的类型)
-frame[['e']].applymap(f2)  ## 可以正常运行
-
-```
-> 总结来看:
-> 1. 只有当函数是对标量进行操作时, `map()`才能使用, 并且只能用于series上.
-
-> 2. 只有当函数是对标量进行操作时, `applymap()`才能使用, 并且只能用于dataframe.
-
-> 3. 当函数是对向量进行的操作时, `apply()`只能施用于dataframe上.
-当函数是对标量进行的操作时, `apply()`只能施用于siries上.
 
 
 
@@ -367,6 +285,7 @@ frame[['e']].applymap(f2)  ## 可以正常运行
 
 
 #  数据框相关常用技巧
+ 
 
 #### 1. 修正行索引`df.reset_index(inplace=True)`
 > 在进行完行选择选出子集以后，可以修正行索引
@@ -568,3 +487,85 @@ df = pd.concat[df, df1, axis=0]
 > - axis=1是按列拼接
 
 > - [说明文档](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html)
+
+
+#### 13. 重命名列明
+
+`df.rename(index=str, columns={"colA_old": "colA_new", "colC_old": "colC_new"})`
+> 通过columns给出一个替换额字典，据此替换
+
+#### 14. 对数据框施用某种函数
+
+###### 14.1. 每列分别使用某种函数: `apply()`
+```python
+import pandas as pd
+import numpy as np
+frame = pd.DataFrame(np.random.randn(4, 3), columns=list('bde'), index=['Utah', 'Ohio', 'Texas', 'Oregon'])
+f1 = lambda x: x.max() - x.min()
+frame.apply(f1)
+"""
+结果为:
+b    1.133201
+d    1.965980
+e    2.829781
+"""
+```
+> `apply`既能作用于dataframe, 也能作用于series.
+
+
+###### 14.2. 每个元素分别使用某种元素: `applymap()`
+```python
+## 接上面的frame
+f2 = lambda x: '%.2f' % x
+frame.applymap(f2)
+"""
+结果为:
+            b      d      e
+Utah    -0.03   1.08   1.28
+Ohio     0.65   0.83  -1.55
+Texas    0.51  -0.88   0.20
+Oregon  -0.49  -0.48  -0.31
+"""
+
+```
+> applymap只能作用于dataframe
+
+###### 14.3 比较`map()`, `apply()`, `applymap()`
+```python
+## 对于f1这种对向量操作的函数
+frame.apply(f1) ##可以正常运行
+frame.map(f1) ##报错(由于map作用的类型)
+frame.applymap(f1)  ##报错(由于函数f1作用域的类型)
+
+frame['e'].apply(f1) ##报错(由于函数f1作用域的类型)
+frame['e'].map(f1)  ##报错(由于函数f1作用域的类型)
+frame['e'].applymap(f1)  ##报错(由于applymap作用的类型)
+
+frame[['e']].apply(f1) ## 可以正常运行
+frame[['e']].map(f1)  ## 报错(由于map作用的类型)
+frame[['e']].applymap(f1)  ##报错(由于函数f1作用域的类型)
+
+
+
+
+## 对于f2这种对标量操作的函数
+frame.apply(f2) ##报错(由于函数f2作用域的类型)
+frame.map(f2) ##报错(由于map作用的类型)
+frame.applymap(f2)  ##可以运行
+
+frame['e'].apply(f2) ## 可以正常运行
+frame['e'].map(f2)  ## 可以正常运行
+frame['e'].applymap(f2)  ## 报错(由于applymap作用的类型)
+
+frame[['e']].apply(f2) ## 报错(由于函数f2作用域的类型)
+frame[['e']].map(f2)  ##报错(由于map作用的类型)
+frame[['e']].applymap(f2)  ## 可以正常运行
+
+```
+> 总结来看:
+> 1. 只有当函数是对标量进行操作时, `map()`才能使用, 并且只能用于series上.
+
+> 2. 只有当函数是对标量进行操作时, `applymap()`才能使用, 并且只能用于dataframe.
+
+> 3. 当函数是对向量进行的操作时, `apply()`只能施用于dataframe上.
+当函数是对标量进行的操作时, `apply()`只能施用于siries上.
