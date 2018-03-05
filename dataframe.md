@@ -93,12 +93,7 @@ x = pd.Series([1,2,3], index=['one', 'two', 'three'])
 
 # 引用
 
-1. 查看数据框基本信息
-> - `df.info()` 查看基本信息
-> - `df.describe()` 查看每列的统计信息
-
-
-2. 引用某些列
+1. 引用某些列
 ```python
 dic2 = {'a':[1,2,3,4],'b':[5,6,7,8],
         'c':[9,10,11,12],'d':[13,14,15,16]}
@@ -150,25 +145,31 @@ df.iloc[[0, 3, 5], 0:2]
 # 数据框相关基本操作
 
 ### 1. 查看数据框的基本信息
-1. 查看各列的数据属性`print(df.dtypes)`
-2. 查看列名
+
+
+1. 查看数据框基本信息
+> - `df.info()` 查看基本信息
+> - `df.describe()` 查看每列的统计信息
+
+2. 查看各列的数据属性`print(df.dtypes)`
+3. 查看列名
 > - `df.columns.tolist()`
 
 > - `list(df)`
 
-3. 查看行名`df.index.tolist()`
-4. 查看维度信息`df.shape`
+4. 查看行名`df.index.tolist()`
+5. 查看维度信息`df.shape`
 > 查看行数`df.shape[0]` or `len(df)`
 
 > 查看列数`df.shape[1]`
 
-5. 判定数据类型是否为数据框
+6. 判定数据类型是否为数据框
 > `df.__class__.__name__=='DataFrame'`
 
-6. 统计某一列每种类型有多少行数据
+7. 统计某一列每种类型有多少行数据
 `df['animal'].value_counts()`
 
-7. 透视表功能
+8. 透视表功能
 `df.pivot_table(index='animal', columns='visits', values='age', aggfunc='mean')`
 
 ### 2. 按列聚合`groupby()`
