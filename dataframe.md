@@ -253,7 +253,10 @@ cate_sales_monthly = sku_sales_daily_modify.groupby(['item_third_cate_cd','YM'])
 > 把多个值对应替换
 > - `df['priority'] = df['priority'].map({'yes': True, 'no': False})`
 
-5. 
+5. 删除重复的行
+`df.drop_duplicates()`
+
+
 
 # 3. 储存
 
