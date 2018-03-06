@@ -231,12 +231,15 @@ df = pd.DataFrame({'grps': list('aaabbcaabcccbbc'), 'vals': [12,345,3,1,45,14,4,
 df.groupby('grps')['vals'].nlargest(3)  # 每组都取出最大的3个
 df.groupby('grps')['vals'].nsmallest(3)  # 每组都取出最小的3个
 ```
-> 12. 按照某列分组, 按照另一列的数值排序, 每组取出前3个数, 并且求和
+
+12. 按照某列分组, 按照另一列的数值排序, 每组取出前3个数, 并且求和
 ```python
 df = pd.DataFrame({'grps': list('aaabbcaabcccbbc'), 'vals': [12,345,3,1,45,14,4,52,54,23,235,21,57,3,87]})
 df.groupby('grps')['vals'].nlargest(3).sum(level=0)  # 每组都取出最大的3个并且组内求和
 df.groupby('grps')['vals'].nlargest(3).sum()# 每组都取出最小的3个,并且全部求和
 ```
+> - `level`是用来处理有层次关系的df数据, 从外层往内层求和
+> - 默认`level=None`
 
 ### 3. 按列聚合`groupby()`
 1. 按照一列聚合
