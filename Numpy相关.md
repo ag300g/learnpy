@@ -79,3 +79,25 @@ print(Z)
 #### 矩阵相加或者相减
 np.zeros((5,3))-np.ones((5,3))
 ```
+
+
+8. 四舍五入
+```python
+Z = np.random.uniform(-10,10,10)
+## 向下取整
+print (Z - Z%1)
+print (np.floor(Z))
+
+## 截断
+print (np.trunc(Z))
+print (Z.astype(int))
+
+## 向上取整
+print (np.ceil(Z)-1)
+
+## 四舍五入
+print (np.round(z))  ## 在有负数的时候会报错
+print (np.trunc(Z + np.copysign(0.5, Z)))
+
+
+```
