@@ -75,6 +75,15 @@ print(Z)
 
 7. 矩阵计算
 ```python
+
+## 元素级四则运算
+Z = np.arange(9).reshape(3,3)
+print(Z+1)
+print(Z-1)
+print(Z*10)
+print(Z/10)
+
+
 ## 矩阵相乘
 Z = np.dot(np.ones((5,3)), np.ones((3,2)))
 print(Z)
@@ -87,7 +96,17 @@ np.zeros((5,3)) - np.ones((5,3))
 np.zeros((5,3)) + np.ones((1,3))  # 后面的行数只能是5或者1
 np.zeros((5,3)) - np.ones((1,3))  # 后面的行数只能是5或者1
 
+## 每列分别相加减
+np.zeros((5,3)) + np.ones((5,1))  # 后面的行数只能是3或者1
+np.zeros((5,3)) - np.ones((5,1))  # 后面的行数只能是3或者1
+
+
 ```
+> - `np.arange(5)`默认是一个1行5列的行向量
+> - `np.arange(5)`等价于`np.arange(5).reshape(1,5)`
+> - `np.arange(5).transpose()`无效, 仍然等价于`np.arange(5)`
+> - `np.arange(5).reshape(1,5).transpose()`等价于`np.arange(5).reshape(5,1)`, 反之亦然
+
 
 
 8. 四舍五入
