@@ -48,3 +48,11 @@ np.nan - np.nan
 ##Out[55]: False
 
 ```
+
+6. 归一化一个矩阵
+```python
+Z = np.random.random((5,5))
+Zmax, Zmin = Z.max(), Z.min()
+Z = (Z - Zmin)/(Zmax - Zmin)
+print(Z)
+```
