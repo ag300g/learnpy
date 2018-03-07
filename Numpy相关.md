@@ -162,6 +162,24 @@ C = np.subtract.outer(X, Y)  ## C实际上是一个2*3的矩阵, 其中c_ij对�
 
 12. 矩阵的一些特征
 ```python
+from numpy import linalg as LA
+a = np.arange(9) - 4
+b = a.reshape((3, 3))
 
+print(LA.det(b)) # 计算b的行列式
+print(LA.norm(b)) # 计算b的范数
 ```
-
+> 
+| ord   | norm for matrices            | norm for vectors           |
+| ----- | ---------------------------- | -------------------------- |
+| None  | Frobenius norm               | 2-norm                     |
+| ‘fro’ | Frobenius norm               | –                          |
+| ‘nuc’ | nuclear norm                 | –                          |
+| inf   | max(sum(abs(x), axis=1))     | max(abs(x))                |
+| -inf  | min(sum(abs(x), axis=1))     | min(abs(x))                |
+| 0     | –                            | sum(x != 0)                |
+| 1     | max(sum(abs(x), axis=0))     | as below                   |
+| -1    | min(sum(abs(x), axis=0))     | as below                   |
+| 2     | 2-norm (largest sing. value) | as below                   |
+| -2    | smallest singular value      | as below                   |
+| other | –                            | sum(abs(x)**ord)**(1./ord) |
