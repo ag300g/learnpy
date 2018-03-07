@@ -165,11 +165,16 @@ C = np.subtract.outer(X, Y)  ## C实际上是一个2*3的矩阵, 其中c_ij对�
 from numpy import linalg as LA
 a = np.arange(9) - 4
 b = a.reshape((3, 3))
+c = np.diag([1,2,3])
 
-print(LA.det(b)) # 计算b的行列式
-print(LA.norm(b)) # 计算b的范数
+print(LA.det(b)) # 计算矩阵b的行列式
+print(LA.norm(b)) # 计算矩阵b的范数
+print(LA.inv(c)) # 计算矩阵c的逆矩阵
+print(LA.eig(c)[0]) # 计算矩阵c的特征值
+print(LA.eig(c)[1]) # 计算矩阵c的特征值对应的特征向量
+
 ```
-> `LA.norm(b,ord=None)` 可以指定要计算的范数类型, 默认是None
+> - `LA.norm(b,ord=None)` 可以指定要计算的范数类型, 默认是None
 | ord   | norm for matrices            | norm for vectors           |
 | ----- | ---------------------------- | -------------------------- |
 | None  | Frobenius norm               | 2-norm                     |
