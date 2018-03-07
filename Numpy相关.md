@@ -173,6 +173,17 @@ print(LA.inv(c)) # 计算矩阵c的逆矩阵
 print(LA.eig(c)[0]) # 计算矩阵c的特征值
 print(LA.eig(c)[1]) # 计算矩阵c的特征值对应的特征向量
 
+## SVD分解
+a = np.random.randn(9, 6)
+U, s, V = np.linalg.svd(a, full_matrices=True) # 是TRUE时,U是9*9, V是6*6
+S = np.zeros((9, 6))
+S[:6, :6] = np.diag(s)
+np.allclose(a, np.dot(U, np.dot(S, V)))
+
+U, s, V = np.linalg.svd(a, full_matrices=False) # 是False时, U是9*6, V是6*6
+U.shape, s.shape, V.shape
+S = np.diag(s)
+np.allclose(a, np.dot(U, np.dot(S, V)))
 ```
 > - `LA.norm(b,ord=None)` 可以指定要计算的范数类型, 默认是None
 | ord   | norm for matrices            | norm for vectors           |
