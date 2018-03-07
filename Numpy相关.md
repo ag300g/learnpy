@@ -126,6 +126,11 @@ print (np.ceil(Z)-1)
 ## 四舍五入
 print (np.round(z))  ## 在有负数的时候会报错
 print (np.trunc(Z + np.copysign(0.5, Z)))
+```
 
 
+9. 在0到1之间等距离生成10个点, 不包括0和1
+```python
+Z = np.linspace(0,1,11,endpoint=False)[1:]
+print(Z)
 ```
