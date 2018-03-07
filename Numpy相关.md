@@ -2,6 +2,9 @@
 ```python
 Z = np.arange(1,11)
 print(Z)
+
+Z = 1+np.arange(10)
+print(Z)
 ```
 2. 倒序一个向量
 ```python
