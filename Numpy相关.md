@@ -152,3 +152,16 @@ Z[(np.arange(len(Z)))[Z == Z.max()]]  # 通过下标取得最大值
 ```
 
 
+11. 外加和外减
+```python
+X = np.arange(2)
+Y = 10+np.arange(3)
+C = np.subtract.outer(X, Y)  ## C实际上是一个2*3的矩阵, 其中c_ij对应的是x_i-y_j
+```
+
+
+12. 矩阵的一些特征
+```python
+
+```
+
