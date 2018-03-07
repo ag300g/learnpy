@@ -134,3 +134,21 @@ print (np.trunc(Z + np.copysign(0.5, Z)))
 Z = np.linspace(0,1,11,endpoint=False)[1:]
 print(Z)
 ```
+
+10. 找到向量中最小的元素的下标
+```python
+## 简便方法
+Z = np.random.uniform(0,10,100)
+max_index = Z.argmax() # 最大值的下标
+Z[max_index] # 最大值
+
+## 复杂方法
+Z = np.random.uniform(0,10,100)
+Z.max() # 取得向量中最大的元素的值
+np.arange(len(Z))[Z == Z.max()]  # 取得向量中最大元素的下标
+Z[Z == Z.max()]  # 通过TRUE,FALSE的序列取得最大值
+Z[(np.arange(len(Z)))[Z == Z.max()]]  # 通过下标取得最大值
+
+```
+
+
