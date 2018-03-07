@@ -13,6 +13,9 @@ print(Z[::-1])
 ```
 3. 找到一个列表中的非零元素
 ```python
+"""
+第一种方法, 使用列表去找
+"""
 a = [1,2,0,0,10,0]
 nz = np.nonzero(a)
 ind = nz[0]
@@ -20,6 +23,16 @@ print(ind)
 ## 返回的结果是 0,1,4, 是a中非零元素的下标
 nonzeroa = [a[i] for i in ind]
 ## 通过这种方式可以取得a中的非零元素
+
+
+"""
+第二种方法, 使用np.array的性质
+"""
+a = [1,2,0,0,10,0]
+arraya = np.array(a)
+
+nz = np.arange(len(a))[arraya != 0]
+nonzeroa = arraya[arraya != 0]
 ```
 4. 初始化一个矩阵用以计算实验
 ```python
