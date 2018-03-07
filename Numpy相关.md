@@ -169,8 +169,8 @@ b = a.reshape((3, 3))
 print(LA.det(b)) # 计算b的行列式
 print(LA.norm(b)) # 计算b的范数
 ```
-> 
-| ord   | norm for matrices            | norm for vectors           |
+> `LA.norm(b,ord=None)` 可以指定要计算的范数类型, 默认是None
+| ord   | norm for matrices            | norm for vectors           |
 | ----- | ---------------------------- | -------------------------- |
 | None  | Frobenius norm               | 2-norm                     |
 | ‘fro’ | Frobenius norm               | –                          |
