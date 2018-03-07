@@ -56,3 +56,13 @@ Zmax, Zmin = Z.max(), Z.min()
 Z = (Z - Zmin)/(Zmax - Zmin)
 print(Z)
 ```
+
+7. 矩阵计算
+```python
+#### 矩阵相乘
+Z = np.dot(np.ones((5,3)), np.ones((3,2)))
+print(Z)
+
+#### 矩阵相加或者相减
+np.zeros((5,3))-np.ones((5,3))
+```
