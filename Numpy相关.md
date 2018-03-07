@@ -186,6 +186,7 @@ S = np.diag(s)
 np.allclose(a, np.dot(U, np.dot(S, V)))
 ```
 > - `LA.norm(b,ord=None)` 可以指定要计算的范数类型, 默认是None
+
 | ord   | norm for matrices            | norm for vectors           |
 | ----- | ---------------------------- | -------------------------- |
 | None  | Frobenius norm               | 2-norm                     |
