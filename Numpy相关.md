@@ -200,3 +200,14 @@ np.allclose(a, np.dot(U, np.dot(S, V)))
 | 2     | 2-norm (largest sing. value) | as below                   |
 | -2    | smallest singular value      | as below                   |
 | other | –                            | sum(abs(x)**ord)**(1./ord) |
+
+
+13. 向量元素类型转换
+```python
+x = np.array([1, 2, 2.5])
+x.astype(int)
+
+Z = np.arange(10, dtype=np.int32)
+Y = Z.astype(np.float32)
+
+```
