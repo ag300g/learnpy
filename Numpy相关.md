@@ -101,7 +101,7 @@ np.zeros((5,3)) + np.ones((5,1))  # 后面的行数只能是3或者1
 np.zeros((5,3)) - np.ones((5,1))  # 后面的行数只能是3或者1
 
 
-np.zeros((5,3)) + np.arange(3) # 不会报错, 会把
+np.zeros((5,3)) + np.arange(3) # 不会报错, 会把np.arange(3)默认是行向量进行计算
 np.zeros((5,3)) + np.arange(5)  # 会报错, np.arange(5)默认是行向量, 前面的矩阵的列数不符
 
 ```
