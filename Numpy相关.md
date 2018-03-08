@@ -209,5 +209,21 @@ x.astype(int)
 
 Z = np.arange(10, dtype=np.int32)
 Y = Z.astype(np.float32)
+```
+
+
+### 14. 行和 & 列和
+```python
+X = np.random.rand(5, 10) # 生成一个5*10列的矩阵
+
+## 行和,行平均
+Y = X.mean(axis=1, keepdims=True) # 每行求均值, 并且保留维度特征, 形成一个5*1的矩阵
+Y = X.sum(axis=1, keepdims=False) # 每行求和, 丢弃维度特征, 形成一个长度为5的向量
+
+## 列和,列平均
+X = np.random.rand(5, 10) # 生成一个5*10列的矩阵
+Y = X.mean(axis=0, keepdims=True) # 每列求均值, 并且保留维度特征, 形成一个1*10的矩阵
+Y = X.sum(axis=0, keepdims=False) # 每列求和, 丢弃维度特征, 形成一个长度为10的向量
 
 ```
+> 默认`keepdims=False`
