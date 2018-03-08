@@ -102,9 +102,8 @@ np.zeros((5,3)) - np.ones((5,1))  # 后面的行数只能是3或者1
 
 
 ```
-> - `np.arange(5)`默认是一个1行5列的行向量
-> - `np.arange(5)`等价于`np.arange(5).reshape(1,5)`
-> - `np.arange(5).transpose()`无效, 仍然等价于`np.arange(5)`
+> - `np.arange(5)`没有行列信息, 进行矩阵计算时默认是一个行向量
+> - `np.arange(5)`在进行矩阵计算时等价于`np.arange(5).reshape(1,5)`, 但事实上并不是一个矩阵, 比如`np.arange(5).transpose()`无效, 仍然等价于`np.arange(5)`
 > - `np.arange(5).reshape(1,5).transpose()`等价于`np.arange(5).reshape(5,1)`, 反之亦然
 
 
