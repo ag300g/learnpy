@@ -245,7 +245,9 @@ print(Z[Z[:,1].argsort()])  # Z[:,1].argsort()返回Z的第2列从小到大排�
 I = np.random.randint(0,10,20)  # 生成[0,10)之间的随机整数组成的长度为20的向量
 Y = np.bincount(I, minlength=10)  # 按照从0开始的顺序统计每个数字=出现的次数
 ```
-> `minlength=10`意味着输出的Y最多知道10行, 默认值是`minlength=0`
+> `minlength=10`意味着输出的Y最多只有10个数字, 默认值是`minlength=0`
+> 如果I中最大的数字是5, 则`minlength=0,1,2,3,4,5,6`都可以输出从0到5(共6位)的统计结果
+> 如果I中最大的数字是5, 而`minlength=7`都可以输出从0到6(共7位)的统计结果
 
 
 
