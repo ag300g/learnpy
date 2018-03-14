@@ -279,8 +279,18 @@ print slice_one
 slice_two = arr[:, ::2]
 print 'second slice is:'
 print slice_two
-```
 
+>> array is:
+[[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]]
+>> first slice is:
+[[5 6]]
+>> second slice is:
+[[ 0  2]
+ [ 4  6]
+ [ 8 10]]
+```
 
 
 
