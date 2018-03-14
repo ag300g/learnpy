@@ -253,6 +253,15 @@ Y_hat = np.bincount(I, weight=W)  # 每个数字按照对应的W中的wweight�
 > 上述代码中 Y 和 Y_hat 结果一致
 
 
+### 17. 加权平均
+```python
+D = np.random.uniform(0,1,100)
+S = np.random.randint(0,10,100)
+D_sums = np.bincount(S, weights=D)
+D_counts = np.bincount(S)
+D_means = D_sums / D_counts
+```
+
 
 
 
