@@ -411,3 +411,6 @@ def moving_average(a, n=3) :
 Z = np.arange(20)
 print(moving_average(Z, n=3))
 ```
+> `ret[:-n]`是去掉尾部n个数据
+> `ret[n:]`是去掉头部n个数据
+
