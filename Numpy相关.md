@@ -323,6 +323,9 @@ try:
     print '第二行第二列的值(尝试用 Numpy 的方式获取):', arr[1, 1]
 except Exception as e:
     print str(e)
+    
+>> 第二行第二列的值: 4
+>> 第二行第二列的值(尝试用 Numpy 的方式获取): list indices must be integers, not tuple
 
 ```
 
