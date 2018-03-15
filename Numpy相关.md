@@ -328,6 +328,9 @@ except Exception as e:
 >> 第二行第二列的值(尝试用 Numpy 的方式获取): list indices must be integers, not tuple
 
 ```
+> 在取切片数据时, 每一个维度都有三个参数可以传入, 中间以`:`间隔
+> 不同的维度的参数使用`,`间隔
+> `arr[i:j:k]`首先是假设arr是一个一维数组, 切片信息从下标`i`开始, 到下标`j`结束, 中间每隔`k`个就取出
 
 
 
