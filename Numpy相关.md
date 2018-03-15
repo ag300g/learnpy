@@ -374,8 +374,35 @@ np.repeat(x, [1, 2], axis=0) # 列数固定, 行数扩张, 第0行重复1次, �
        [3, 4]])
 ```
 
+### 20. 累加
+```python
+#1#
+# 如果不指定行列, 就把矩阵当成向量处理
+a = np.array([[1,2,3], [4,5,6]])
+print(a)
+>> array([[1, 2, 3],
+       [4, 5, 6]])
 
-### 20. 计算一个向量的移动平均值
+print(np.cumsum(a))
+>> array([ 1,  3,  6, 10, 15, 21])
+
+print(np.cumsum(a, dtype=float))     # specifies type of output value(s)
+>> array([  1.,   3.,   6.,  10.,  15.,  21.])
+
+#2#
+# 如果指定了行列, 就把在行或者列上进行累加
+np.cumsum(a,axis=0)      # sum over rows for each of the 3 columns
+>> array([[1, 2, 3],
+       [5, 7, 9]])
+np.cumsum(a,axis=1)      # sum over columns for each of the 2 rows
+>> array([[ 1,  3,  6],
+       [ 4,  9, 15]])
+```
+
+
+
+
+### 21. 计算一个向量的移动平均值
 ```python
 def moving_average(a, n=3) :
     ret = np.cumsum(a, dtype=float)
