@@ -264,6 +264,9 @@ D_means = D_sums / D_counts
 
 ### 18. 索引和切片
 ```python
+'''
+切片
+'''
 arr = np.arange(12).reshape((3, 4))
 print 'array is:'
 print arr
@@ -290,6 +293,20 @@ print slice_two
 [[ 0  2]
  [ 4  6]
  [ 8 10]]
+ 
+ 
+ '''
+ 索引
+ '''
+ arr = np.array([
+    [1, 2, 3, 4],
+    [2, 4, 6, 8],
+    [3, 6, 9, 12],
+    [4, 8, 12, 16]
+])
+
+print arr[[0, 2], [3, 1]]
+
 ```
 
 
