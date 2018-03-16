@@ -405,8 +405,6 @@ np.cumsum(a,axis=1)      # sum over columns for each of the 2 rows
 ```
 
 
-
-
 ### 21. 计算一个向量的移动平均值
 ```python
 def moving_average(a, n=3) :
@@ -420,3 +418,12 @@ print(moving_average(Z, n=3))
 
 > `ret[n:]`是去掉头部n个数据
 
+
+### 22. 逻辑向量的求反,普通向量取相反的符号
+```python
+Z = np.random.randint(0,2,100)
+np.logical_not(arr, out=arr)
+
+Z = np.random.uniform(-1.0,1.0,100)
+np.negative(arr, out=arr)
+```
