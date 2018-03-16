@@ -422,8 +422,8 @@ print(moving_average(Z, n=3))
 ### 22. 逻辑向量的求反,普通向量取相反的符号
 ```python
 Z = np.random.randint(0,2,100)
-np.logical_not(arr, out=arr)
+np.logical_not(Z, out=Z)
 
 Z = np.random.uniform(-1.0,1.0,100)
-np.negative(arr, out=arr)
+np.negative(Z, out=Z)
 ```
