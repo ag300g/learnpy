@@ -83,6 +83,7 @@ print(Z+1)
 print(Z-1)
 print(Z*10)
 print(Z/10)
+print(Z**2) # 计算每个元素的平方值, 并返回
 
 
 ## 矩阵相乘
