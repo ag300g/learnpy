@@ -188,6 +188,11 @@ U, s, V = np.linalg.svd(a, full_matrices=False) # 是False时, U是9*6, V是6*6
 U.shape, s.shape, V.shape
 S = np.diag(s)
 np.allclose(a, np.dot(U, np.dot(S, V)))
+
+### 计算矩阵的秩
+Z = np.random.uniform(0,1,(10,10))
+U, S, V = np.linalg.svd(Z) # Singular Value Decomposition, 默认full_matrices=True
+rank = np.sum(S > 1e-10) # 找到那些不为零的S的个数即为原矩阵的秩
 ```
 > - `LA.norm(b,ord=None)` 可以指定要计算的范数类型, 默认是None
 
