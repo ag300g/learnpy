@@ -441,11 +441,11 @@ np.random.shuffle(Z)
 n = 5
 
 # Slow
-print (Z[np.argsort(Z)[-n:]])
+print (Z[np.argsort(Z)[-n:]]) # np.argsort(Z)按照从小到大的顺序Z中每个顺序对应的元素的下标是多少
 
 # Fast
 print (Z[np.argpartition(-Z,n)[:n]])
 ```
-
+> `Z[np.argsort(Z)[i]] = np.sort(Z)[i]` 
 
 
