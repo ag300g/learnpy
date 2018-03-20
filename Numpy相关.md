@@ -433,3 +433,19 @@ np.logical_not(Z, out=Z)
 Z = np.random.uniform(-1.0,1.0,100)
 np.negative(Z, out=Z)
 ```
+
+### 23. 取一个array中最大的n个数
+```python
+Z = np.arange(10000)
+np.random.shuffle(Z)
+n = 5
+
+# Slow
+print (Z[np.argsort(Z)[-n:]])
+
+# Fast
+print (Z[np.argpartition(-Z,n)[:n]])
+```
+
+
+
