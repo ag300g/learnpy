@@ -451,24 +451,27 @@ print (Z[np.argpartition(-Z,n)[:n]])
 ### 24. 取一个array中>10的元素的下标
 ```python
 x = np.arange(9.).reshape(3, 3)
->>> np.where( x > 5 )
-(array([2, 2, 2]), array([0, 1, 2]))
->>> x[np.where( x > 3.0 )]               # Note: result is 1D.
-array([ 4.,  5.,  6.,  7.,  8.])
->>> np.where(x < 5, x, -1)               # Note: broadcasting.
-array([[ 0.,  1.,  2.],
+np.where( x > 5 )
+>>> (array([2, 2, 2]), array([0, 1, 2]))
+
+x[np.where( x > 3.0 )]               # Note: result is 1D.
+>>> array([ 4.,  5.,  6.,  7.,  8.])
+
+np.where(x < 5, x, -1)               # Note: broadcasting.
+>>> array([[ 0.,  1.,  2.],
        [ 3.,  4., -1.],
        [-1., -1., -1.]])
        
->>> goodvalues = [3, 4, 7]
->>> ix = np.isin(x, goodvalues)
->>> ix
-array([[False, False, False],
+goodvalues = [3, 4, 7]
+ix = np.isin(x, goodvalues)
+ix
+>>> array([[False, False, False],
        [ True,  True, False],
        [False,  True, False]], dtype=bool)
->>> np.where(ix)
-(array([1, 1, 2]), array([0, 1, 1]))
-```
 
+np.where(ix)
+>>> (array([1, 1, 2]), array([0, 1, 1]))
+```
+> 返回的是下标信息, 如果是矩阵, 就返回两个数组, 分别对应两个维度的下标信息
 
 
