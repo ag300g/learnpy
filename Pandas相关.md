@@ -141,6 +141,7 @@ df.iloc[0:3, [0,1]]
 df.iloc[[0, 3, 5], 0:2]
 ```
 
+---
 
 # 数据框相关基本操作
 
@@ -184,6 +185,7 @@ df.iloc[[0, 3, 5], 0:2]
 > - `df.drop([11,12],inplace='True')`
 
 > 2. 删除某些列
+> - `df.drop('sku_id',axis=1,inplace='True')`
 > - `del df['sku_id']`
 > - `spring = df.pop('spring')` 在df中删除了相应的列, 存到了spring中
 
