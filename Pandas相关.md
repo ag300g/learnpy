@@ -178,8 +178,15 @@ df.iloc[[0, 3, 5], 0:2]
 
 
 ### 2. 基本操作
-1. 删除某一行
-`df = df.drop('k')`
+1. 删除某一行或者某一列
+> 1. 删除某些行
+> - `df = df.drop(11)`
+> - `df.drop([11,12],inplace='True')`
+
+> 2. 删除某些列
+> - `del df['sku_id']`
+> - `spring = df.pop('spring')` 在df中删除了相应的列, 存到了spring中
+
 
 2. 按某一行正序, 另一行倒序排列
 `df.sort_values(by=['age', 'visits'], ascending=[False, True])`
