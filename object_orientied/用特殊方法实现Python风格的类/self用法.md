@@ -102,3 +102,22 @@ class Student(object):
 
 > - 需要注意的是，在Python中，变量名类似`__xxx__`的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以，不能用`__name__`、`__score__`这样的变量名。
 > - 以一个下划线开头的实例变量名，比如`_name`，这样的实例变量外部是可以访问的，但是，按照约定俗成的规定，当你看到这样的变量时，意思就是，“虽然我可以被访问，但是，请把我视为私有变量，不要随意访问”。
+
+#### 8. 对象方法和类方法
+- self代表类的实例，而非类。
+- 如果我们的定义和调用时均不传类实例(self)是可以的，这就是类方法。
+```python
+class Test:
+    def ppr(self):
+        print(self)
+        print(self.__class__)
+
+t = Test()
+t.ppr()
+
+执行结果为:
+<__builtin__.Test instance at 0x102cb6758>
+__builtin__.Test
+```
+
+> 在Python解释器的内部，当我们调用t.ppr()时，实际上Python解释成Test.ppr(t)，也就是把self替换成了类的实例。
