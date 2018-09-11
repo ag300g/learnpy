@@ -40,6 +40,7 @@ git clean -xfd
 git clean -nxfd
 git clean -nf
 git clean -nfd
+```
 
 #### 6. 把远程更新同步到本地
 ```
