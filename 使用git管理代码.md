@@ -10,11 +10,12 @@ git config --global user.name ag300g
 git config --global user.email ag300g@163.com
 ```
 只有当名字和remote的用户名一致时, 才会记录commit
+> 不加`--global`只在当前git库中使用此名字
 
 #### 3. 把当前文件夹中的所有文件加到git库中, 并commit到本地的master分支
 ```
 git add .
-git commit
+git commit -a -m 'update **'
 
 ```
 
