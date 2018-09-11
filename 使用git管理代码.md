@@ -25,16 +25,27 @@ git remote add origin git@github.com:ag300g/learnpy.git
 git push -u origin master
 ```
 
-
-#### 5. 把远程更新同步到本地
-
-> # 删除 untracked files
+#### 5. 删除 untracked files
+```
+# 删除 untracked files
 git clean -f
+
 # 连 untracked 的目录也一起删掉
 git clean -fd
+
 # 连 gitignore 的untrack 文件/目录也一起删掉 （慎用，一般这个是用来删掉编译出来的 .o之类的文件用的）
 git clean -xfd
+
 # 在用上述 git clean 前，墙裂建议加上 -n 参数来先看看会删掉哪些文件，防止重要文件被误删
 git clean -nxfd
 git clean -nf
 git clean -nfd
+
+#### 6. 把远程更新同步到本地
+```
+git pull origin master
+```
+上述命令其实相当于`git fetch` 和 `git merge`
+在实际使用中，`git fetch`更安全一些，因为在`merge`前，我们可以查看更新情况，然后再决定是否合并。
+
+
