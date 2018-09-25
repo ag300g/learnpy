@@ -49,4 +49,14 @@ git pull origin master
 上述命令其实相当于`git fetch` 和 `git merge`
 在实际使用中，`git fetch`更安全一些，因为在`merge`前，我们可以查看更新情况，然后再决定是否合并。
 
+#### 7. 使新设置的.gitignore生效
+需要先删除缓存，然后把所有文件重新添加一次，然后先把.gitignore提交了，然后再把所有文件同步到远程库
+```
+git rm -r --cached .  #清除缓存
+git add . #重新trace file
+git commit -m "update .gitignore" #提交和注释
+git push origin master #可选，如果需要同步到remote上的话
+```
+
+
 
