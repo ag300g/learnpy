@@ -24,6 +24,8 @@ git commit -a -m 'update **'
 git remote add origin git@github.com:ag300g/learnpy.git
 git push -u origin master
 ```
+- `-u`是设置了一个默认的远程数据库，在使用来了`-u`之后， 也可以直接使用`git push`
+- `-f`在本地与远程不一致且以本地为准的情况下可以直接使用`-f`强行使用本地数据覆盖远端数据
 
 #### 5. 删除 untracked files
 ```
