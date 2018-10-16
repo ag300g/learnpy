@@ -355,13 +355,13 @@ writer.save()
 ```
 ### 3.2. 把数据框内容存入csv
 ```python
-res[['filename','child','parent']].drop_duplicates().to_csv('table_relationship.csv')
+res[['filename','child','parent']].drop_duplicates().to_csv('table_relationship.csv',index=False)
 ```
 > 存储的列和顺序为:'filename','child','parent'
 
 > `drop_duplicates()`去除了重复的行
 
-> `to_csv('table_relationship.csv')`在当前路径下存储为`csv`格式文件
+> `to_csv('table_relationship.csv',index=False)`在当前路径下存储为`csv`格式文件
 
 
 
