@@ -9,7 +9,7 @@ e.g. input: [1,2,3,-3,1,1,-5,3,3,3,-1,2,-1,3,-10,1,1,3]
 '''
 
 class Solution:
-    # @param prices, a list of integer
+    # @param, a list of integer
     # @return an integer
 
     '''
