@@ -1,6 +1,4 @@
 ## some examples
-
-
 class Rctangle:
     def area(self):
         return self.length*self.width
@@ -62,7 +60,7 @@ class Student(object):
         self.__score = score
 
     def print_score(self):
-        print "%s: %s" % (self.__name, self.__score)
+        print("%s: %s" % (self.__name, self.__score))
 
 t = Student("John",95.5)
 
