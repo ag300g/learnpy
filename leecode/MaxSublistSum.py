@@ -12,44 +12,26 @@ class Solution:
     # @param prices, a list of integer
     # @return an integer
 
-    ## (1)
     '''
-    思路: 子序列扩充,
+    思路:
+    (1) 从第一个元素开始累加, 累加结果大于0就继续累加, 这时还是有希望得到更大的的值得, 一旦累加结果小于或者等于0, 就要重新累加, 因为前一部分数据肯定不会存在于最优子序列中
+    (2) 记录当前所有累加段的最大值即为全局最大值
     '''
     def maxSubsum(self, vl):
         if vl == []: return 0
-        if min(vl) <= 0: return min(vl)
-        start_index = 0
-        end_index = len(vl)-1
-        for i in range(len(prices)):
-            if sum(vl[start_index:i]) < 0: start_index = i+1
-            max_profit = max(prices[i]-current_min_price, max_profit)
-        return max_profit
+        if max(vl) <= 0: return max(vl)
+        sub_sum = vl[0]
+        max_sub_sum = vl[0]
+        for i in range(1, len(vl)):
+            if sub_sum <= 0: sub_sum = vl[i]
+            else: sub_sum += vl[i]
+            max_sub_sum = max(max_sub_sum,sub_sum)
+        return max_sub_sum
 
 if __name__ == '__main__':
-    vl = [1,2,3,-3,1,1,-5,3,3,3,-1,2,-1,3,-10,1,1,3]
+    vl = [1, 2, 3, -3, 1, 1, -5, 3, 3, 3, -1, 2, -1, 3, -10, 1, 1, 3]
     test = Solution()
-    out1 = test.maxSubsum(vl)
-    out2 = test.maxSubsum(vl)
-    print(out1)
-    print(out2)
+    out = test.maxSubsum(vl)
+    print(out)
 
 
-def maxsub(lt):
-    maxi, sumi = lt[0], lt[0]
-    j=1
-    for i in lt[1:]:
-        print("************loop***********:"+str(j))
-        j = j+1
-        if sumi <= 0:
-            sumi = i  ## 相当于restart
-            print("条件1:"+str(sumi))
-        else:
-            sumi += i
-            print("条件2:"+str(sumi))
-        maxi = max(maxi, sumi)
-        print("当前最优值:"+str(maxi))
-    return maxi
-
-lt = [1, 2, 3, -3, 1, 1, -5, 3, 3, 3, -1, 2, -1, 3, -10, 1, 1, 3]
-maxsub(lt)
