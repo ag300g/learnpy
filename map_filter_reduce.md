@@ -9,12 +9,11 @@ Map，Filter 和 Reduce 三个函数能为函数式编程提供便利。我们�
 > - `map`顾名思义, 会将一个函数'映射'到一个输入列表的所有元素上 
 > - 即对`sequence`中的`item`依次执行`function(item)`，并将执行结果组成一个list返回
 
-两个简短的例子:
+一些简短的例子:
 ```python
 def cube(x): return x*x*x
 map(cube, range(1, 11))
 ## 结果为：[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]
-
 
 def cube(x) : return x + x
 map(cube , "abcde")
@@ -26,21 +25,21 @@ map(add, range(8), range(8))
 ## 结果为：[0, 2, 4, 6, 8, 10, 12, 14]
 ```
 
+实际上, 我们使用`map`是用一种简单而漂亮得多的方式来替代以下这种循环
+> 这时如果有匿名函数`lambda`的配合, 连上面例子中的函数定义也可以省略
 ```python
+## 每个元素都进行三次方的操作的朴素的实现方式
 items = [1, 2, 3, 4, 5]
 squared = []
 for i in items:
-    squared.append(i**2)
-```
+    squared.append(i**3)
 
-`Map`可以让我们用一种简单而漂亮得多的方式来实现。就是这样：
-
-```python
+## 使用map和lambda配合更简洁的实现方式
 items = [1, 2, 3, 4, 5]
-squared = list(map(lambda x: x**2, items))
+squared = list(map(lambda x: x**3, items))
 ```
-大多数时候，我们使用匿名函数(lambdas)来配合`map`, 所以我在上面也是这么做的。
- 不仅用于一列表的输入， 我们甚至可以用于一列表的函数！
+
+更灵活的是, 还能通过`lambda`函数, 把一个函数list作为输入.
 
 ```python
 def multiply(x):
@@ -69,8 +68,8 @@ for i in range(5):
 
 ## ```filter```
 **用法规范**: `filter(function, sequence)`
-> 
-> 即对sequence中的item依次执行function(item)，将执行结果为True的item组成一个List/String/Tuple（取决于sequence的类型）返回
+> 顾名思义，`filter`过滤列表中的元素，并且返回一个由所有符合要求的元素所构成的列表，**符合要求**即函数映射到该元素时返回值为True.
+> 即对`sequence`中的`item`依次执行`function(item)`，将执行结果为`True`的`item`组成一个`List/String/Tuple`（取决于sequence的类型）返回
 
 两个简短的例子：
 ```python
