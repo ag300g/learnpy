@@ -5,15 +5,26 @@ Map，Filter 和 Reduce 三个函数能为函数式编程提供便利。我们�
 
 ## ```map```
 
-`Map`会将一个函数映射到一个输入列表的所有元素上。这是它的规范：
+**用法规范**: `map(function, sequence)`
+> - `map`顾名思义, 会将一个函数'映射'到一个输入列表的所有元素上 
+> - 即对`sequence`中的`item`依次执行`function(item)`，并将执行结果组成一个list返回
 
-
-**规范**
+两个简短的例子:
 ```python
-map(function_to_apply, list_of_inputs)
-```
+def cube(x): return x*x*x
+map(cube, range(1, 11))
+## 结果为：[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]
 
-大多数时候，我们要把列表中所有元素一个个地传递给一个函数，并收集输出。比方说：
+
+def cube(x) : return x + x
+map(cube , "abcde")
+## 结果为：['aa', 'bb', 'cc', 'dd', 'ee']
+
+## 另外map也支持多个sequence，这就要求function也支持相应数量的参数输入：
+def add(x, y): return x+y
+map(add, range(8), range(8))
+## 结果为：[0, 2, 4, 6, 8, 10, 12, 14]
+```
 
 ```python
 items = [1, 2, 3, 4, 5]
@@ -57,8 +68,9 @@ for i in range(5):
 
 
 ## ```filter```
-用法示例`filter(function, sequence)`
-> 对sequence中的item依次执行function(item)，将执行结果为True的item组成一个List/String/Tuple（取决于sequence的类型）返回
+**用法规范**: `filter(function, sequence)`
+> 
+> 即对sequence中的item依次执行function(item)，将执行结果为True的item组成一个List/String/Tuple（取决于sequence的类型）返回
 
 两个简短的例子：
 ```python
