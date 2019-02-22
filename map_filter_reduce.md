@@ -102,16 +102,25 @@ print(list(less_than_zero))
 
 
 ## ```Reduce```
+当需要对一个列表进行一些计算并返回一个聚合的结果时，`Reduce` 是个非常有用的函数。
 
-当需要对一个列表进行一些计算并返回结果时，`Reduce` 是个非常有用的函数。举个例子，当你需要计算一个整数列表的乘积时。
+**用法规范**: `reduce(function, sequence, starting_value)`:
+> 对`sequence`中的`item`顺序迭代调用`function`，如果有`starting_value`，还可以作为初始值调用
 
-通常在 python 中你可能会使用基本的 for 循环来完成这个任务。
 
-现在我们来试试 reduce：
+例如可以用来对List求和：
+```python
+def add(x,y): return x + y
+reduce(add, range(1, 11))
+## 结果为：55 （注：1+2+3+4+5+6+7+8+9+10）
 
+reduce(add, range(1, 11), 20)
+## 结果为：75 （注：1+2+3+4+5+6+7+8+9+10+20）
+```
+
+当然, 通过`lambda`可以更简洁的实现
 ```
 from functools import reduce
-product = reduce( (lambda x, y: x * y), [1, 2, 3, 4] )
-
-# Output: 24
+reduce( (lambda x, y: x * y), [1, 2, 3, 4])
+## 结果为：24 （注：1+2+3+4)
 ```
