@@ -16,7 +16,7 @@ git config --global user.email ag300g@163.com
 ```
 git add .
 git commit -a -m 'update **'
-
+-- 或者 git commit -am 'update **'
 ```
 
 #### 4. 把本地的git库同步commit到remote库
